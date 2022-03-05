@@ -1,0 +1,141 @@
+import java.util.*;
+class Laundry {
+
+    public static void main(String[] args) {
+        int total=0;
+        List <PackageDetails> pack = new ArrayList<>();
+        List <PackageBooking> bookings = new ArrayList<>();
+        pack.add(new PackageDetails("GoldPackage",2,20,30));
+        pack.add(new PackageDetails("SilverPackage",4,10,45));
+        pack.add(new PackageDetails("PlatinumPackage",4,15,10));
+        int useropt = 1;
+        Scanner sc = new Scanner(System.in);
+        for (PackageDetails b : pack) {
+            b.PackageDisplayinfo();
+        }
+        while (useropt == 1) {
+            System.out.println("Press 1 for Booking \nPress 2 to exit");
+            useropt = sc.nextInt();
+            if(useropt == 1) {
+                PackageBooking book = new PackageBooking();
+                for(PackageDetails d : pack){
+                    if( d.getPackageName().contains(book.pname)){
+                        if(d.getNoOfClothes()!=0){
+
+                            int a= d.getNoOfClothes();
+                            int b=d.getSubFee();
+                            bookings.add(book);
+                            d.setNoOfClothes(--a);
+                            total+=b;
+                            System.out.println("Booking is Confirmed, Thanks for booking\n");
+                            System.out.println("Fee Rs."+d.SubFee);
+                            System.out.println("Your Validity " +d.Validity);
+                            System.out.println("Laundry Package Name "+d.PackageName+" Balance Clothes is "+d.getNoOfClothes());
+                            System.out.println("Total Amount RS."+total);
+                        }else{
+                            System.out.println("Sorry Laundry is Full,Try Another Laundry ");
+                        }
+
+                    }
+                    //something here
+                }
+
+
+            }
+            if(useropt > 2 ){
+                System.out.println("Invalid No");
+            }
+
+        }
+    }
+}
+public class PackageDetails {
+    public String PackageName;
+    public int NoOfClothes;
+    public int SubFee;
+    public int Validity;
+    PackageDetails(String pname, int clo, int fee, int val) {
+        this.PackageName = pname;
+        this.NoOfClothes = clo;
+        this.SubFee = fee;
+        this.Validity = val;
+    }
+
+
+    public String getPackageName() {
+        return PackageName;
+    }
+
+    public int getValidity() {
+        return Validity;
+    }
+    public void setValidity(int val) {
+        Validity = val;
+    }
+
+    public int getNoOfClothes() {
+        return NoOfClothes;
+    }
+
+    public void setNoOfClothes(int clo) {
+        NoOfClothes = clo;
+    }
+
+    public int getSubFee() {
+        return SubFee;
+    }
+
+    public void setSubFee(int fee) {
+        SubFee = fee;
+    }
+
+    public void PackageDisplayinfo() {
+        System.out.println("LaundryPackage Name:" + PackageName + " ||NoOfClothes: " + NoOfClothes + " ||SubscriptionFee: " + SubFee + " ||Validity Days " + Validity);
+        System.out.println("-----------------------------------------------------------------------");
+    }
+}
+public class PackageDetails {
+    public String PackageName;
+    public int NoOfClothes;
+    public int SubFee;
+    public int Validity;
+    PackageDetails(String pname, int clo, int fee, int val) {
+        this.PackageName = pname;
+        this.NoOfClothes = clo;
+        this.SubFee = fee;
+        this.Validity = val;
+    }
+
+
+    public String getPackageName() {
+        return PackageName;
+    }
+
+    public int getValidity() {
+        return Validity;
+    }
+    public void setValidity(int val) {
+        Validity = val;
+    }
+
+    public int getNoOfClothes() {
+        return NoOfClothes;
+    }
+
+    public void setNoOfClothes(int clo) {
+        NoOfClothes = clo;
+    }
+
+    public int getSubFee() {
+        return SubFee;
+    }
+
+    public void setSubFee(int fee) {
+        SubFee = fee;
+    }
+
+    public void PackageDisplayinfo() {
+        System.out.println("LaundryPackage Name:" + PackageName + " ||NoOfClothes: " + NoOfClothes + " ||SubscriptionFee: " + SubFee + " ||Validity Days " + Validity);
+        System.out.println("-----------------------------------------------------------------------");
+    }
+}
